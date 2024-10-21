@@ -12,9 +12,3 @@ These notes include:
 
 ---
 
-## 🛠️ Additional Resources (Optional)
-If you'd like to check individual topics directly from this repository, feel free to browse the relevant sections:
-
-- [Methodologies](#methodologies)
-- [Tools](#tools)
-- [Write-ups](#write-ups)
