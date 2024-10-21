@@ -1,46 +1,23 @@
-BookMyShow Bug Report 
+## Bug Bounty Write-ups
 
-ID number	A3:2017-Sensitive Data Exposure (OWASP TOP 10)
-Name	Sensitive Data Exposure 
-Reporter	Akshay Mahajan     
-Submit Date	24/02/2021
-Summary	Sensitive information of people is being leaked openly, the ones who has placed orders on fanhood.bookmyshow.com is being leaked on one of its subdomain that is https://fanhood-returns.bookmyshow.com/ 
+### BookMyShow Sensitive Data Exposure
 
-URL	https://fanhood-returns.bookmyshow.com/
-Screenshot/Video	Response_BookMyShow.PNG, BookMyShow_POC.mp4
-Platform	Windows 
-Operating System	Windows 10 Operating System
-Browser	Microsoft Edge
-Severity	CRITICAL
+- **ID Number**: A3:2017-Sensitive Data Exposure (OWASP TOP 10)
+- **Summary**: Sensitive information was exposed on a subdomain of BookMyShow, revealing Personally Identifiable Information (PII) such as names, phone numbers, and addresses when retrieving order details via an API.
+- **Severity**: Critical
+- **Date**: 24/02/2021
 
+#### Steps to Reproduce
+1. Visit the URL: `https://fanhood-returns.bookmyshow.com/`
+2. Enter a registered email address.
+3. Intercept the request using Burp Suite.
+4. Send the request to the repeater and observe the response revealing PII.
+   
+#### Expected Result
+Only the order ID should be exposed in the response.
 
-Description
-Whenever a registered user’s email is entered in one of the sub domain of BookMyShow that is https://fanhood-returns.bookmyshow.com/, order ID is the expected result, but here when I intercepted the request and checked with the response, all the sensitive information was clearly displayed in the response section which included the PII that is  Name, Phone number, delivery address, mode of payment which was used while ordering, along with its confirmation page.
+#### Actual Result
+PII such as name, phone number, and delivery address was exposed along with order details.
 
-tracking_url : 	"https://www.delhivery.com/track/package/2926210037575"
-billing_address : 
-browser_ip : 
-checkout_id : 
-checkout_token 
-
-
-
-Steps to reproduce
-
-1) Visit the URL, and enter registered email id. (in my case I ordered a Tshirt from fanhood using my registered email ID)
- 2) According to the POC, I ordered a product from my account that is mahajan.akshay898@gmail.com, hence we observe my order ID
- 3) Click on the order ID and intercept the request in burp suite.
- 4) Send the intercepted request to repeater and go, if you observe the response all the Personally identifiable information is leaked.
-5) For further exploitation I tried to find some more registered emails and found out test@bookmyshow.com, the outcome was the same for every other email, sensitive information was being leaked. 
-
-Expected result
-Only the order ID should be expected into the response and not the customers information.
-
-Actual result
-Entire order summary along with Personally Identifiable Information of the customer who has placed orders gets reflected into the response section.
-
-POC 
-Refer the video proof of concept demonstrating the vulnerability.
-
-
+For more details and a Proof of Concept (POC), refer to the attached video.
 
